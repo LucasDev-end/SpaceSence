@@ -12,7 +12,7 @@ As reuniões ocorrerão on-line via Discord as duas vezes por semana. Haverá um
 
 As reuniões devem durar entre 1 e 2 horas e meia. 
 
-Os temas das reuniões serão colocados em Atas que ficarão no planner. 
+Os temas das reuniões serão colocados em Atas que ficarão no Trello. 
  
 
 <h3>Conduta durante a reunião</h3> 
