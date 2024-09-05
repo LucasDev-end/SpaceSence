@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpaceSense</title>
+</head>
+<body>
+
+    <h2>Projeção de lucros por locação</h2>
+    Quantas prateleiras você aloca para produtos parceiros?
+    <input type="number" id="ipt_qtd_prateleiras_alocadas"> <br>
+    Qual o valor médio de alocação por prateleira?
+    <input type="number" id="ipt_preco_prateleiras_alocadas"> <br>
+    Você possui conhecimento exatado dos pontos frios da sua loja e pontos quentes?
+    <input type="text" id="ipt_pontos_quentes"><br>
+
+    <div id="div_msg_locacao"></div> <br>
+    <h2>Projeção de vendas</h2> <br>
+
+    Qual o ticket médio de suas vendas?
+    <input type="number" id="ipt_ticket_medio"> <br>
+    Quantos produtos você vende por mês? 
+    <input type="number" id="ipt_qtd_vendas_medio"> <br>
+    Você possui um layout feito de maneira estratégica para sua loja?
+    <input type="text" id="ipt_layout"> <br>
+
+    <div id="div_msg_vendas"></div>
+
+
+    <button onclick="calcular()">Calcular possibilidade de rentabilidade</button>
+
+
+
+
+
+</body>
+</html>
+
+<script>
+
+    function calcular(){
+        var qtd_prateleiras_alocadas = Number(ipt_qtd_prateleiras_alocadas.value);
+        var preco_prateleiras_alocadas = Number(ipt_preco_prateleiras_alocadas.value);
+        var pontos_quentes = ipt_pontos_quentes.value;
+
+        var ticket_medio = Number(ipt_ticket_medio.value);
+        var qtd_vendas_medio = Number(ipt_qtd_vendas_medio.value);
+        var layout = ipt_layout.value;
+
+        var total_prateleiras_inicial = qtd_prateleiras_alocadas * preco_prateleiras_alocadas;
+        var total_prateleiras_final = total_prateleiras_inicial;
+
+        if (pontos_quentes == 'não') {
+            total_prateleiras_final *= 1.15;
+        }
+        var diferenca_pretaleira = total_prateleiras_final - total_prateleiras_inicial;
+    
+        var porcentagem_prateleiras = diferenca_pretaleira/total_prateleiras_inicial*100;
+
+        
+        var total_vendas_inicial = ticket_medio * qtd_vendas_medio;
+        var total_vendas_final = total_vendas_inicial;
+    
+        if (layout == 'não') {
+            total_vendas_final *= 1.12;
+        }
+       
+        var diferenca_vendas = total_vendas_final - total_vendas_inicial;
+        var porcentagem_layout = diferenca_vendas/ total_vendas_inicial * 100;
+
+
+        var total_inicial = total_prateleiras_inicial + total_vendas_inicial;
+        var total_final = total_prateleiras_final + total_vendas_final;
+        var porcentagem_diferenca_total = ((total_final - total_inicial)/total_inicial)*100;
+
+
+
+        div_msg_locacao.innerHTML = `Seu faturamento por alocação é de: ${total_prateleiras_inicial}<br><br>
+        Com a SpaceSense ele seria de: ${total_prateleiras_final}<br>
+        Sua rentabilidade cresceria: ${porcentagem_prateleiras}%
+        `
+        
+        div_msg_vendas.innerHTML = 
+        `Seu faturamento por alocação é de: ${total_vendas_inicial}<br><br>
+        Com a SpaceSense ele seria de: ${total_vendas_final}
+        Sua rentabilidade cresceria: ${porcentagem_layout}% <br>
+
+        <h1>Total de crescimento do faturamento com a SpaceSense</h1><br>
+        <h3>
+        Sua empresa atualmente fatura: ${total_inicial}<br>
+        Com a SpaceSense ele faturaria: ${total_final}<br>
+        Sua rentabilidade cresceria: ${porcentagem_diferenca_total}%
+        <h3/>
+        `
+
+
+    }
+
+</script>
