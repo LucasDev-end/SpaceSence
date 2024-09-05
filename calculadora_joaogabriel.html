@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira</title>
+</head>
+
+<body>
+
+    <h1 style="color: #35AAEE;"> <b> Calculadora SpaceSense </b></h1>
+
+    <b>Informe quantas unidades de um determinado produto a empresa atualmente vende diariamente:</b>
+    <br>
+    <input id="ipt_prod" />
+    <br> <br>
+
+    <b>Informe qual o valor deste produto:</b>
+    <br>
+    <input id="ipt_valor" />
+    <br> <br>
+
+    <button onclick="calcular()"> Calcular </button>
+    <br> <br>
+
+    <div id="div_mensagem"></div>
+
+</body>
+
+</html>
+
+<script>
+    function calcular() {
+        var prod = Number(ipt_prod.value);
+        var valor = Number(ipt_valor.value);
+        var totalAtual = prod * valor;
+        var percentual1 = 1.40;
+        var percentual2 = 1.20;
+        var percentual3 = 1.10;
+        var percentual4 = 1.05;
+        var aumento1 = totalAtual * percentual1;
+        var aumento2 = totalAtual * percentual2;
+        var aumento3 = totalAtual * percentual3;
+        var aumento4 = totalAtual * percentual4;
+        var aumentoUni1 = (aumento1 - totalAtual) / valor;
+        var aumentoUni2 = (aumento2 - totalAtual) / valor;
+        var aumentoUni3 = (aumento3 - totalAtual) / valor;
+        var aumentoUni4 = (aumento4 - totalAtual) / valor;
+        var lucro1 = aumento1 - totalAtual;
+        var lucro2 = aumento2 - totalAtual;
+        var lucro3 = aumento3 - totalAtual;
+        var lucro4 = aumento4 - totalAtual;
+
+        div_mensagem.innerHTML = `<b> Atualmente, a venda dos produtos resultam em ${totalAtual}R$. Com a nossa solução e o seu produto alocado em um corredor estimado 
+        que obtenha mais movimentações, a receita crescerá para: </b>
+        <br>
+        <br> <b> No Corredor 1: R$ ${aumento1}. </b> <br>
+        Devido a maior movimentação em 40% neste corredor, seriam vendidos mais ${aumentoUni1} unidades deste produto e um aumento do lucro de R$ ${lucro1} diários. <br>
+
+        <br> <b> No Corredor 2: R$ ${aumento2}. </b> <br>
+        Devido a maior movimentação em 20% neste corredor, seriam vendidos mais ${aumentoUni2} unidades deste produto e um aumento do lucro de R$ ${lucro2} diários. <br>
+
+        <br> <b> No Corredor 3: R$ ${aumento3}. </b> <br>
+        Devido a maior movimentação em 10% neste corredor, seriam vendidos mais ${aumentoUni3} unidades deste produto e um aumento do lucro de R$ ${lucro3} diários. <br>
+
+        <br> <b> No Corredor 4: R$ ${aumento4}. </b> <br>
+        Devido a maior movimentação em 5% neste corredor, seriam vendidos mais ${aumentoUni4} unidades deste produto e um aumento do lucro de R$ ${lucro4} diários. <br>
+        `
+    }
+
+
+
+</script>
