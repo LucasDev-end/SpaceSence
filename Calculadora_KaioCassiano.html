@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Calculadora de Lucro de Aluguel de Prateleiras</h1>
+    Número de prateleiras disponíveis para aluguel:<br>
+    <input id="ipt_prateleiras"/><br><br>
+    Insira o grau de movimentação das prateleiras (baixo, média, alta):<br>
+    <input id="ipt_movimentacao"/><br><br>
+    Valor do aluguel por prateleira por mês:<br>
+    <input id="ipt_aluguel"/><br><br>
+    Percentual de ocupação esperado:<br>
+    <input id="ipt_percentual"/><br><br>
+    Número de meses para avaliação:<br>
+    <input id="ipt_avaliação"/><br><br>
+    <button onclick=" calcular()">Calcular</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function calcular(){
+        var prateleiras = Number(ipt_prateleiras.value);
+        var aluguel = Number(ipt_aluguel.value);
+        var percentual = Number(ipt_percentual.value);
+        var avaliação = Number(ipt_avaliação.value);
+        var movimento = ipt_movimentacao.value
+        var mensal = prateleiras * aluguel * (percentual / 100);
+        var total = mensal * avaliação;
+
+        if (movimento == 'baixo'){
+            mensal = (prateleiras * aluguel * (percentual / 100)) 
+            var total = mensal * avaliação;
+        }
+        if (movimento == 'médio'){
+            mensal = (prateleiras * (aluguel* 1.6) * (percentual / 100)) 
+            var total = mensal * avaliação;
+        }
+        if (movimento == 'alto'){
+            mensal = (prateleiras * (aluguel * 2) * (percentual / 100)) 
+            var total = mensal * avaliação;
+        }
+        div_mensagem.innerHTML = 
+        `<b><br>Receita Mensal Calculada:</b> R$${mensal}<br><br>
+        <b>Receita Total Calculada:</b> R$${total} <br><br>
+         <b>Lucro Bruto Estimado:</b> R$${total}`
+    }
+</script>
