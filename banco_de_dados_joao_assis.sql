@@ -51,6 +51,6 @@ CREATE TABLE vendas (
 );
 
 insert into vendas values
-	(default, "10","2024-01-18"),
-    (default, "19","2024-02-20"),
-    (default, "30","2024-05-15");
+	(default, 10,"2024-01-18"),
+    (default, 19,"2024-02-20"),
+    (default, 30,"2024-05-15");
