@@ -13,7 +13,7 @@ CREATE TABLE Empresa(
 	idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
     nomeEmpresa VARCHAR(50),
     nomeResponsabel VARCHAR(50),
-    telefone CHAR(16), -- +55 11 97385-8156
+    telefone CHAR(16),
     email VARCHAR(256),
     senha VARCHAR(50)
 );

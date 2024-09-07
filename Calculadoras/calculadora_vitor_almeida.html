@@ -65,15 +65,6 @@
 
 <script>
 
-    // 10 - chegou em 50% em uma semana
-    // 100 - produtos em uma prateleira
-    // 50 - preço do produto
-    // 120 - tempo para chegar em 50%
-
-    // (100 / 2) * 10 = 500 produtos movimentados na semana
-    // 500 * 0.9 = 450
-    // 450 
-
     function calcularLucro() {
         var nomeProduto1 = inpProduto1.value
         var nomeProduto2 = inpProduto2.value
@@ -94,12 +85,12 @@
         var taxaRep2 = Number(inpRep2.value)
 
         var produtoMov1 = (qtdProd1 / 2) * numPrat1
-        var valorVendido1 = produtoMov1 * 0.9 // 0.9 é a quantidade de produtos que são vendidos em média, quando são retirados da prateleira
+        var valorVendido1 = produtoMov1 * 0.9 // 0.9 é a quantidade de produtos que são vendidos em média, quando são retirados da prateleira (90%)
 
         var produtoMov2 = (qtdProd2 / 2) * numPrat2
-        var valorVendido2 = produtoMov2 * 0.9 // 0.9 é a quantidade de produtos que são vendidos em média, quando são retirados da prateleira
+        var valorVendido2 = produtoMov2 * 0.9 // 0.9 é a quantidade de produtos que são vendidos em média, quando são retirados da prateleira (90%)
 
-        if (tempo1 > tempo2) { // 10 > 6
+        if (tempo1 > tempo2) {
 
             if (tempo1 < (tempo2 * 2)) {
                 textField.innerHTML = `Os produtos ${nomeProduto1} e ${nomeProduto2} estão bem localizados.`
