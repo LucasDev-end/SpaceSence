@@ -17,7 +17,10 @@
     <input type="text" id="ipt_nivel">
     
     <h1>INSIRA A QUANTIDADE DE PRATELEIRAS: </h1>
-    <input type="number" id="ipt_num_prat"><br><br>
+    <input type="number" id="ipt_num_prat">
+
+    <h1>INSIRA O FATURAMENTO MENSAL:</h1>
+        <input type="number" id="ipt_faturamento"><br><br>
     
     <button onclick="calcular()">CALCULAR</button>
     <div id="div_mensagem"></div>
@@ -31,7 +34,9 @@
         var movimentacao = ipt_nivel.value
         var custos = 0
         var tam_nivel = 0
-        var parametro = 0                
+        var parametro = 0         
+        
+        //O valor do simulador será calculado a partir do PORTE, MOVIMENTAÇÃO e Nº de PRATELEIRAS inserido pelo usuário.
         
         if ( tamanho == "Pequeno") {
             //Sensores distancia curta
@@ -52,7 +57,7 @@
         }
 
         var mov_nivel = 0
-
+        
         if ( movimentacao == "Baixa"){
             mov_nivel = 0.5;
         }
@@ -67,24 +72,25 @@
 
         var aumento_lucro = 0;
         if (numeroPrat > 16){
-            parametro = 16 ;            
+            parametro = 16 ;      // se o número de prateleiras passar de 16, será contado como 16 prateleiras          
             aumento_lucro = (mov_nivel * tam_nivel) + parametro ;
         }
 
         if (numeroPrat <= 16){
-            parametro =  10;            
+            parametro =  10;      // se o número de prateleiras for entre 7 e 16, será contado como 10 prateleiras         
             aumento_lucro = (mov_nivel * tam_nivel) + parametro ;
         }
 
         if (numeroPrat <= 6){
-            parametro =  numeroPrat;            
+            parametro =  numeroPrat;   // se o número de prateleiras for menor ou igual a 6, será contado o número informado pelo usuário           
             aumento_lucro = (mov_nivel * tam_nivel) + parametro ;
         }
 
-        div_mensagem.innerHTML = `O custos totais serão de <b>R$${custos}</b> para as ${numeroPrat} prateleiras. <br>
-        Com nossa solução, seu estabelecimento pode aumentar em até <b>${aumento_lucro}%</b> o faturamento.`;
+        var faturamento = Number(ipt_faturamento.value)
+        var aumento_faturamento = ( faturamento * (aumento_lucro/100)) + faturamento;
+
+        div_mensagem.innerHTML = `O custos totais serão de <b>R$${custos}</b> para a implementação do sistema nas ${numeroPrat} prateleiras. <br>
+        Com nossa solução, seu estabelecimento pode aumentar em até <b>${aumento_lucro}%</b> o faturamento.<br>
+        De <b>R$${faturamento}</b> para <b>R$${aumento_faturamento}</b> por mês.`;
     }
-
-
-
 </script>
