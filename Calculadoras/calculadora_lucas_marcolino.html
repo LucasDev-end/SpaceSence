@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+<body>
+    <b>Calculadora Financeira</b>
+    <br>
+    <br>
+    Informe sua media de clientes por mês:
+    <br>
+    <input type="number" id="ipt_mediaClientes">
+    <br>
+    Qual o total de prateleiras no seu estabelecimento?
+    <br>
+    <input type="number" id="ipt_totalPrateleiras">
+    <br>
+    No mês, quantas unidades de um produto é vendida?
+    <br>
+    <input type="number" id="ipt_produto">
+    <br>
+    Quantas prateleiras no seu estabelecimento não tem nenhuma locação?
+    <br>
+    <input type="number" id="ipt_locacao">
+    <br>
+    Quantas prateleiras sem locação fica localizado proximo a entrda e/ou balcão caixa?
+    <br>
+    <input type="number" id="ipt_potencial">
+    <br>
+
+
+    <button onclick="calcular()">Calcular</button>
+    <button onclick="limpar()">Limpar</button>
+    <br>
+
+    <div id="div_calcular"></div>
+
+</body>
+</html>
+
+<script>
+    function calcular(){
+
+        // inicialização de variaveis.
+        var clientes = Number(ipt_mediaClientes.value);
+        var totalPrateleiras = Number(ipt_totalPrateleiras.value);
+        var produto = Number(ipt_produto.value);
+        var locacao = Number(ipt_locacao.value);
+        var potencial = Number(ipt_potencial.value);
+
+        //Calculos
+        var mediaVendasPorCliente = produto / clientes;              // Media de produtos vendidos por cliente.
+        var porcentagemLocacao = (locacao / totalPrateleiras) * 100; // Percentual de prateleiras sem locação.
+        var potencialVendas = (potencial / totalPrateleiras) * 100;  // Potencial de vendas por prateleiras bem localizadas.
+
+        //mensagem
+        div_calcular.innerHTML = `
+        <p>Você tem <b>${porcentagemLocacao.toFixed(2)}%</b> de prateleiras que não estão gerando receita.</p>
+        <p>Se otimizar a utilização dessas prateleiras, você pode aumentar suas vendas em torno de <b>${potencialVendas.toFixed(2)}%</b> nas áreas de maior movimento.</p>
+        <p>A média de vendas de produtos por cliente é <b>${mediaVendasPorCliente.toFixed(2)}</b> unidades.</p>`;
+    }
+
+    function limpar(){
+        div_calcular.innerHTML = ``;
+    }
+</script>
