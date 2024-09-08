@@ -52,8 +52,9 @@
         var total_prateleiras_final = total_prateleiras_inicial;
 
         if (pontos_quentes == 'não') {
-            total_prateleiras_final *= 1.15;
+            total_prateleiras_final *= 1.23;
         }
+
         var diferenca_pretaleira = total_prateleiras_final - total_prateleiras_inicial;
     
         var porcentagem_prateleiras = diferenca_pretaleira/total_prateleiras_inicial*100;
@@ -63,7 +64,7 @@
         var total_vendas_final = total_vendas_inicial;
     
         if (layout == 'não') {
-            total_vendas_final *= 1.12;
+            total_vendas_final *= 1.23;
         }
        
         var diferenca_vendas = total_vendas_final - total_vendas_inicial;
@@ -72,6 +73,7 @@
 
         var total_inicial = total_prateleiras_inicial + total_vendas_inicial;
         var total_final = total_prateleiras_final + total_vendas_final;
+
         var porcentagem_diferenca_total = ((total_final - total_inicial)/total_inicial)*100;
 
 
