@@ -23,6 +23,6 @@ CREATE TABLE Prateleira(
     corredor INT,
     setor INT,
     qtdMovimentacao INT,
-    nivel VARCHAR(30),
+    nivel INT,
 	CONSTRAINT chkNivel CHECK (nivel IN(1,2,3,4,5,6,7,8,9,10))
 );
