@@ -100,19 +100,19 @@
         if (porcentagem_prateleiras_alocadas_vs_totais_final >= 100) {
             porcentagem_prateleiras_alocadas_vs_totais_final = 100;
         }
-        
+
         div_mensagem.innerHTML = `
         <h3>Seu fluxo de clientes é considerado: ${fluxo_de_clientes}.
         <br>A relação entre prateleiras totais e prateleiras alocadas no seu comércio é de: ${porcentagem_prateleiras_alocadas_vs_totais_inicial}%.
         <br>Com a SpaceSense teria um potencial de <span style = 'color:green'>${porcentagem_prateleiras_alocadas_vs_totais_final}%</span>para alocaçao. <br>
-        <br>O preço médio de alocação por prateleira é de: <span>${preco_medio_prateleiras_inicial}</span>.
-        <br>Com a SpaceSense teria um potencial de <span style = 'color:green'>${preco_medio_prateleiras_final}</span><br>
-        <br>O faturamento atual com alocação de prateleiras é de: <span>${faturamento_total_com_prateleiras_inicial}</span>
-        <br>Com a SpaceSense seria de: <span style = 'color:green'>${faturamento_total_com_prateleiras_final}</span>.<br>
-        <br>O faturamento atual com a venda de produtos é de: <span>${faturamento_total_produtos_inicial}</span>.
-        <br>Com a SpaceSense seria de: <span style = 'color:green'>${faturamento_total_produtos_final}</span>.<br>
-        <br>Seu faturamento em ${meses_avaliacao} meses é de: ${faturamento_total_em_avaliacao_inicial}.
-        <br>Com a SpaceSense teria um potencia de: <span style = 'color:green'>${faturamento_total_em_avaliacao_final}</span>. Um crescimento de <span style = 'color:green'>${porcentagem_diferenca_faturamento_total_inicial_vs_final}%</span>.
+        <br>O preço médio de alocação por prateleira é de: <span>R$${preco_medio_prateleiras_inicial}</span>.
+        <br>Com a SpaceSense teria um potencial de <span style = 'color:green'>R$${preco_medio_prateleiras_final}</span><br>
+        <br>O faturamento atual com alocação de prateleiras é de: <span>R$${faturamento_total_com_prateleiras_inicial}</span>
+        <br>Com a SpaceSense seria de: <span style = 'color:green'>R$${faturamento_total_com_prateleiras_final}</span>.<br>
+        <br>O faturamento atual com a venda de produtos é de: <span>R$${faturamento_total_produtos_inicial}</span>.
+        <br>Com a SpaceSense seria de: <span style = 'color:green'>R$${faturamento_total_produtos_final}</span>.<br>
+        <br>Seu faturamento em ${meses_avaliacao} meses é de: R$${faturamento_total_em_avaliacao_inicial}.
+        <br>Com a SpaceSense teria um potencial de: <span style = 'color:green'>R$${faturamento_total_em_avaliacao_final}</span>. Um crescimento de <span style = 'color:green'>${porcentagem_diferenca_faturamento_total_inicial_vs_final}%</span>.
         <h3/>
         `
 
