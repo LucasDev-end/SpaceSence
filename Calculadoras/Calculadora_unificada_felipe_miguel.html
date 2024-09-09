@@ -6,18 +6,18 @@
     <title>Calculadora SpaceSense</title>
 </head>
 <body>
-    <span style="font-size: 40px;"><b> Calculadora financeira</b></span><img src="imagens/cifrao.jpg" width="100px"><br><br>
-    <span style="font-size: 20px;">Informe sua media de clientes por mês:</span>
+    <span style="font-size: 40px;"><b> Calculadora financeira</b></span><br><br>
+    <span style="font-size: 20px;">Média de clientes por mês:</span>
     <input type="number" id="ipt_media_clientes"><br>
-    <span style="font-size: 20px;">Informe o total de prateleiras em seu estabelecimento:</span>
+    <span style="font-size: 20px;">Total de prateleiras do estabelecimento:</span>
     <input type="number" id="ipt_total_prateleiras"><br>
-    <span style="font-size: 20px;">Informe quantas prateleiras já possuem alocação no estabelecimento:</span>
+    <span style="font-size: 20px;">Quantas prateleiras já possuem alocação no estabelecimento:</span>
     <input type="number" id="ipt_prateleiras_alocadas"><br>
-    <span style="font-size: 20px;">Informe o valor médio por alocação de prateleira:</span>
+    <span style="font-size: 20px;">Valor médio por alocação de prateleira(em reais):</span>
     <input type="number" id="ipt_preco_prateleiras_alocadas"><br>
-    <span style="font-size: 20px;">Informe o ticket médio de sua loja (preço médio entre as compras de seus clientes):</span>
+    <span style="font-size: 20px;">Ticket médio mensal por cliente no estabelecimento(em reais):</span>
     <input type="number" id="ipt_ticket_medio"> <br>
-    <span style="font-size: 20px;">Informe o número de meses para avaliação:</span>
+    <span style="font-size: 20px;">Quantos meses você gostaria de avaliar:</span>
     <input id="ipt_meses_avaliacao"/><br>
     <span style="font-size: 20px;">Você possui conhecimento exatado dos pontos quentes e frios de sua loja? (sim ou não)</span>
     <input type="text" id="ipt_pontos_quentes"><br>
@@ -52,7 +52,7 @@
         var prateleiras_para_alocacao_potencial = 0;
         var preco_medio_prateleiras_final = 0;
         var fluxo_de_clientes = "";
-        
+        var cor = "";
         
         
 
@@ -63,18 +63,21 @@
             prateleiras_para_alocacao_potencial = qtd_prateleiras_alocadas * 1.2;
             preco_medio_prateleiras_final = preco_medio_prateleiras_inicial * 1.3;
             fluxo_de_clientes = "Médio";
+            cor = "orange";
         } 
         if (media_clientes >= 5000) {
             crescimento_potencial_de_faturamento = 1.4;
             prateleiras_para_alocacao_potencial = qtd_prateleiras_alocadas * 1.2;
             preco_medio_prateleiras_final = preco_medio_prateleiras_inicial * 1.6;
             fluxo_de_clientes = "Alto";
+            cor = "green";
         }
         if(media_clientes <= 1500){
             crescimento_potencial_de_faturamento = 1.2;
             prateleiras_para_alocacao_potencial = qtd_prateleiras_alocadas * 1.1;
             preco_medio_prateleiras_final = preco_medio_prateleiras_inicial * 1.1;
             fluxo_de_clientes = "Baixo";
+            cor = "red";
         }
     
     
@@ -102,19 +105,20 @@
         }
 
         div_mensagem.innerHTML = `
-        <h3>Seu fluxo de clientes é considerado: ${fluxo_de_clientes}.
-        <br>A relação entre prateleiras totais e prateleiras alocadas no seu comércio é de: ${porcentagem_prateleiras_alocadas_vs_totais_inicial}%.
-        <br>Com a SpaceSense teria um potencial de <span style = 'color:green'>${porcentagem_prateleiras_alocadas_vs_totais_final}%</span>para alocaçao. <br>
-        <br>O preço médio de alocação por prateleira é de: <span>R$${preco_medio_prateleiras_inicial}</span>.
-        <br>Com a SpaceSense teria um potencial de <span style = 'color:green'>R$${preco_medio_prateleiras_final}</span><br>
-        <br>O faturamento atual com alocação de prateleiras é de: <span>R$${faturamento_total_com_prateleiras_inicial}</span>
-        <br>Com a SpaceSense seria de: <span style = 'color:green'>R$${faturamento_total_com_prateleiras_final}</span>.<br>
-        <br>O faturamento atual com a venda de produtos é de: <span>R$${faturamento_total_produtos_inicial}</span>.
-        <br>Com a SpaceSense seria de: <span style = 'color:green'>R$${faturamento_total_produtos_final}</span>.<br>
-        <br>Seu faturamento em ${meses_avaliacao} meses é de: R$${faturamento_total_em_avaliacao_inicial}.
-        <br>Com a SpaceSense teria um potencial de: <span style = 'color:green'>R$${faturamento_total_em_avaliacao_final}</span>. Um crescimento de <span style = 'color:green'>${porcentagem_diferenca_faturamento_total_inicial_vs_final}%</span>.
-        <h3/>
+        <span style ='font-size: 25px'>Seu fluxo de clientes é considerado: <span style='color:${cor}; font-weight: bold'> ${fluxo_de_clientes}</span>.
+        <br>A relação entre prateleiras totais e prateleiras alocadas no seu comércio é de:<span style = 'color:orange; font-weight: bold'> ${porcentagem_prateleiras_alocadas_vs_totais_inicial}%</span>.
+        <br>Com a SpaceSense teria um potencial de <span style = 'color:green; font-weight: bold'>${porcentagem_prateleiras_alocadas_vs_totais_final}%</span>para alocaçao. <br>
+        <br>O preço médio de alocação por prateleira é de: <span style = 'color:orange; font-weight: bold'>R$${preco_medio_prateleiras_inicial}</span>.
+        <br>Com a SpaceSense teria um potencial de <span style = 'color:green; font-weight: bold'>R$${preco_medio_prateleiras_final}</span><br>
+        <br>O faturamento mensal com alocação de prateleiras é de: <span style = 'color:orange; font-weight: bold'>R$${faturamento_total_com_prateleiras_inicial}</span>
+        <br>Com a SpaceSense teria um potencial mensal de: <span style = 'color:green; font-weight: bold'>R$${faturamento_total_com_prateleiras_final}</span>.<br>
+        <br>O faturamento mensal com a venda de produtos é de: <span style = 'color:orange; font-weight: bold'>R$${faturamento_total_produtos_inicial}</span>.
+        <br>Com a SpaceSense teria um potencial mensal de: <span style = 'color:green; font-weight: bold'>R$${faturamento_total_produtos_final}</span>.<br>
+        <br>Seu faturamento em ${meses_avaliacao} meses é de: <span style = 'color:orange; font-weight: bold>R$${faturamento_total_em_avaliacao_inicial}</span> .
+        <br>Com a SpaceSense teria um potencial em ${meses_avaliacao} meses de: <span style = 'color:green; font-weight:bold'>R$${faturamento_total_em_avaliacao_final}</span>. Um crescimento de <span style = 'color:green; font-weight: bold'>${porcentagem_diferenca_faturamento_total_inicial_vs_final}%</span>.
+        </span>
         `
+        
 
 
             
