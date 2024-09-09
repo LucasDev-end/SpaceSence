@@ -45,33 +45,49 @@
         var porcentagem_prateleiras_alocadas_vs_totais_inicial = qtd_prateleiras_alocadas / total_prateleiras * 100;
 
         var faturamento_total_com_prateleiras_inicial = qtd_prateleiras_alocadas * preco_medio_prateleiras_inicial;
+
         // O número de clientes influencia no potencial de crescimento pois conseguiremos induzir melhor os clientes a compras e haverá mais chance de obtermos mais zonas quentes, consequentemente mair potencial de alocação
 
-        var crescimento_potencial_de_faturamento = 1.4;
+        var crescimento_potencial_de_faturamento =0;
+        var prateleiras_para_alocacao_potencial = 0;
+        var preco_medio_prateleiras_final = 0;
+        var fluxo_de_clientes = "";
         
-        var prateleiras_para_alocacao_potencial = qtd_prateleiras_alocadas * 1.3;
-        var preco_medio_prateleiras_final = preco_medio_prateleiras_inicial * 1.3;
-        var fluxo_de_clientes = "Alto";
-        if (media_clientes < 5000) {
-            crescimento_potencial_de_faturamento = 1.3
-            prateleiras_para_alocacao_potencial = qtd_prateleiras_alocadas * 1.2;
-            preco_medio_prateleiras_final *= 1.2;
-            fluxo_de_clientes = "Médio";
-        }
+        
+        
 
-        if (media_clientes < 1500) {
-            crescimento_potencial_de_faturamento = 1.25     
+        
+        
+        if(media_clientes > 1500){
+            crescimento_potencial_de_faturamento = 1.3;
+            prateleiras_para_alocacao_potencial = qtd_prateleiras_alocadas * 1.2;
+            preco_medio_prateleiras_final = preco_medio_prateleiras_inicial * 1.3;
+            fluxo_de_clientes = "Médio";
+        } 
+        if (media_clientes >= 5000) {
+            crescimento_potencial_de_faturamento = 1.4;
+            prateleiras_para_alocacao_potencial = qtd_prateleiras_alocadas * 1.2;
+            preco_medio_prateleiras_final = preco_medio_prateleiras_inicial * 1.6;
+            fluxo_de_clientes = "Alto";
+        }
+        if(media_clientes <= 1500){
+            crescimento_potencial_de_faturamento = 1.2;
             prateleiras_para_alocacao_potencial = qtd_prateleiras_alocadas * 1.1;
-            preco_medio_prateleiras_final *= 1.1;
+            preco_medio_prateleiras_final = preco_medio_prateleiras_inicial * 1.1;
             fluxo_de_clientes = "Baixo";
         }
+    
+    
+       
+        
+        
 
         if (pontos_quentes == 'não') {
-            crescimento_potencial_de_faturamento += 0.25
+            crescimento_potencial_de_faturamento *= 1.08
         }
 
         if (layout == 'não') {
-            crescimento_potencial_de_faturamento += 0.25
+            crescimento_potencial_de_faturamento *= 1.12
         }
 
         var porcentagem_prateleiras_alocadas_vs_totais_final = prateleiras_para_alocacao_potencial / total_prateleiras * 100;
@@ -81,7 +97,10 @@
         var faturamento_total_em_avaliacao_final = (faturamento_total_com_prateleiras_final + faturamento_total_produtos_final)*meses_avaliacao;
         var porcentagem_diferenca_faturamento_total_inicial_vs_final = (faturamento_total_em_avaliacao_final - faturamento_total_em_avaliacao_inicial) / faturamento_total_em_avaliacao_final *100;
 
-
+        if (porcentagem_prateleiras_alocadas_vs_totais_final >= 100) {
+            porcentagem_prateleiras_alocadas_vs_totais_final = 100;
+        }
+        
         div_mensagem.innerHTML = `
         <h3>Seu fluxo de clientes é considerado: ${fluxo_de_clientes}.
         <br>A relação entre prateleiras totais e prateleiras alocadas no seu comércio é de: ${porcentagem_prateleiras_alocadas_vs_totais_inicial}%.
@@ -98,7 +117,7 @@
         `
 
 
-
+            
         
     }
 </script>
