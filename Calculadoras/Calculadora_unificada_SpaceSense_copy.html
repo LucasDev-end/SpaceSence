@@ -41,6 +41,7 @@
         var cor = "";
         
         //verificar o tamanho/fluxo da loja é importante, pois dependendo da loja não é algo tão eficiente deixar um setor exclusivo ou não.
+        // https://blog.datasales.io/layout-de-supermercado/
         if(media_clientes > 900){
             fluxo_de_clientes = "Médio";
             cor = "orange";
@@ -62,7 +63,6 @@
         if (layout == 'não') {
             crescimento_potencial_de_faturamento += 0.23
         }
-        alert(crescimento_potencial_de_faturamento)
         var faturamento_total_produtos_final = crescimento_potencial_de_faturamento * faturamento_total_produtos_inicial;
         var faturamento_total_em_avaliacao_inicial = faturamento_total_produtos_inicial*meses_avaliacao;
         var faturamento_total_em_avaliacao_final = faturamento_total_produtos_final*meses_avaliacao;
@@ -72,7 +72,7 @@
         div_mensagem.innerHTML = `
         <span style ='font-size: 25px'>Seu fluxo de clientes é considerado: <span style='color:${cor}; font-weight: bold'> ${fluxo_de_clientes}</span>.
 
-        <br>O faturamento mensal com a venda de produtos é de: <span style = 'color:orange; font-weight: bold'>R$${faturamento_total_produtos_inicial}</span>.
+        <br>O faturamento mensal com a venda de produtos é de: <span style = 'color:orange; fontgi-weight: bold'>R$${faturamento_total_produtos_inicial}</span>.
         
         <br>Com a SpaceSense teria um potencial mensal de: <span style = 'color:green; font-weight: bold'>R$${faturamento_total_produtos_final}</span>.<br>
         
