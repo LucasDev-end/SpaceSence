@@ -41,10 +41,11 @@
         var cor = "";
         
         //verificar o tamanho/fluxo da loja é importante, pois dependendo da loja não é algo tão eficiente deixar um setor exclusivo ou não.
-        // https://blog.datasales.io/layout-de-supermercado/
+        //https://blog.datasales.io/layout-de-supermercado/
+        //Definição de média de clientes pelo fluxo do Carrefour
         if(media_clientes > 900){
             fluxo_de_clientes = "Médio";
-            cor = "orange";
+            cor = "yellow";
         } 
         if (media_clientes >= 1800) {
             fluxo_de_clientes = "Alto";
@@ -72,7 +73,7 @@
         div_mensagem.innerHTML = `
         <span style ='font-size: 25px'>Seu fluxo de clientes é considerado: <span style='color:${cor}; font-weight: bold'> ${fluxo_de_clientes}</span>.
 
-        <br>O faturamento mensal com a venda de produtos é de: <span style = 'color:orange; fontgi-weight: bold'>R$${faturamento_total_produtos_inicial}</span>.
+        <br>O faturamento mensal com a venda de produtos é de: <span style ='color:orange; font-weight:bold'>R$${faturamento_total_produtos_inicial}</span>.
         
         <br>Com a SpaceSense teria um potencial mensal de: <span style = 'color:green; font-weight: bold'>R$${faturamento_total_produtos_final}</span>.<br>
         
