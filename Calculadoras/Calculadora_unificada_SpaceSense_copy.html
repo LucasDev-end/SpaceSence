@@ -6,6 +6,7 @@
     <title>Calculadora SpaceSense</title>
 </head>
 <body>
+    <img src="./imagens/Calculadora_financeira.png" alt=""> <br>
     <span style="font-size: 40px;"><b> Calculadora financeira</b></span><br><br>
     <span style="font-size: 20px;">Média de clientes por mês:</span>
     <input type="number" id="ipt_media_clientes"><br>
@@ -27,6 +28,7 @@
 <script>
     function calcular(){
         var media_clientes = Number(ipt_media_clientes.value);
+        var media_clientes_mensal =media_clientes * 30;
         var ticket_medio = Number(ipt_ticket_medio.value);
         var meses_avaliacao = Number(ipt_meses_avaliacao.value);
         var pontos_quentes = ipt_pontos_quentes.value;
@@ -43,15 +45,15 @@
         //verificar o tamanho/fluxo da loja é importante, pois dependendo da loja não é algo tão eficiente deixar um setor exclusivo ou não.
         //https://blog.datasales.io/layout-de-supermercado/
         //Definição de média de clientes pelo fluxo do Carrefour
-        if(media_clientes > 900){
+        if(media_clientes > 27000){
             fluxo_de_clientes = "Médio";
             cor = "yellow";
         } 
-        if (media_clientes >= 1800) {
+        if (media_clientes >= 54000) {
             fluxo_de_clientes = "Alto";
             cor = "green";
         }
-        if(media_clientes <= 900){
+        if(media_clientes <= 27000){
             fluxo_de_clientes = "Baixo";
             cor = "red";
         }
