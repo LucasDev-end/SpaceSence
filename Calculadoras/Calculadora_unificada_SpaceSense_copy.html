@@ -44,15 +44,13 @@
         //verificar o tamanho/fluxo da loja é importante, pois dependendo da loja não é algo tão eficiente deixar um setor exclusivo ou não.
         //https://blog.datasales.io/layout-de-supermercado/
         //Definição de média de clientes pelo fluxo do Carrefour
-        if(media_clientes > 27000){
-            fluxo_de_clientes = "Médio";
-            cor = "yellow";
-        } 
+        fluxo_de_clientes = "Médio";
+        cor = "yellow";
         if (media_clientes >= 54000) {
             fluxo_de_clientes = "Alto";
             cor = "green";
         }
-        if(media_clientes <= 27000){
+        if (media_clientes <= 27000) {
             fluxo_de_clientes = "Baixo";
             cor = "red";
         }
@@ -67,36 +65,28 @@
         // comportamento de compra pelos seus consumidores?
         // Revista Negócios em Projeção, v11, n°1, ano 2020. p. 32
         if (pontos_quentes == 'não') {
-            crescimento_potencial_de_faturamento += 0.20
+            crescimento_potencial_de_faturamento += 0.20;
         }
 
         if (layout == 'não') {
-            crescimento_potencial_de_faturamento += 0.23
+            crescimento_potencial_de_faturamento += 0.23;
         }
         var faturamento_total_produtos_final = crescimento_potencial_de_faturamento * faturamento_total_produtos_inicial;
-        var faturamento_total_em_avaliacao_inicial = faturamento_total_produtos_inicial*meses_avaliacao;
-        var faturamento_total_em_avaliacao_final = faturamento_total_produtos_final*meses_avaliacao;
-        var porcentagem_diferenca_faturamento_total_inicial_vs_final = (faturamento_total_em_avaliacao_final - faturamento_total_em_avaliacao_inicial) / faturamento_total_em_avaliacao_inicial *100;
-
+        var faturamento_total_em_avaliacao_inicial = faturamento_total_produtos_inicial * meses_avaliacao;
+        var faturamento_total_em_avaliacao_final = faturamento_total_produtos_final * meses_avaliacao;
+        var porcentagem_diferenca_faturamento_total_inicial_vs_final = (faturamento_total_em_avaliacao_final - faturamento_total_em_avaliacao_inicial) / faturamento_total_em_avaliacao_inicial * 100;
 
         div_mensagem.innerHTML = `
-        <span style ='font-size: 25px'>Seu fluxo de clientes é considerado: <span style='color:${cor}; font-weight: bold'> ${fluxo_de_clientes}</span>.
+            <span style ='font-size: 25px'>Seu fluxo de clientes é considerado: <span style='color:${cor}; font-weight: bold'> ${fluxo_de_clientes}</span>.
 
-        <br>O faturamento mensal com a venda de produtos é de: <span style ='color:orange; font-weight:bold'>R$${faturamento_total_produtos_inicial}</span>.
-        
-        <br>Com a SpaceSense teria um potencial mensal de: <span style = 'color:green; font-weight: bold'>R$${faturamento_total_produtos_final}</span>.<br>
-        
-        <br>Seu faturamento em ${meses_avaliacao} meses é de:<span style = 'color:orange; font-weight: bold'>R$${faturamento_total_em_avaliacao_inicial}</span>.
-
-        <br>Com a SpaceSense teria um potencial em ${meses_avaliacao} meses de: <span style = 'color:green; font-weight:bold'>R$${faturamento_total_em_avaliacao_final}</span>. Um crescimento de <span style = 'color:green; font-weight: bold'>${porcentagem_diferenca_faturamento_total_inicial_vs_final}%</span>.
-        
-        
-        </span>
-        `
-        
-
-
+            <br>O faturamento mensal com a venda de produtos é de: <span style ='color:orange; font-weight:bold'>R$${faturamento_total_produtos_inicial.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>.
             
-        
+            <br>Com a SpaceSense teria um potencial mensal de: <span style = 'color:green; font-weight: bold'>R$${faturamento_total_produtos_final.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>.<br>
+            
+            <br>Seu faturamento em ${meses_avaliacao} meses é de:<span style = 'color:orange; font-weight: bold'>R$${faturamento_total_em_avaliacao_inicial.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>.
+
+            <br>Com a SpaceSense teria um potencial em ${meses_avaliacao} meses de: <span style = 'color:green; font-weight:bold'>R$${faturamento_total_em_avaliacao_final.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>. Um crescimento de <span style = 'color:green; font-weight: bold'>${porcentagem_diferenca_faturamento_total_inicial_vs_final.toFixed(2)}%</span>.
+            </span>
+        `;
     }
 </script>
