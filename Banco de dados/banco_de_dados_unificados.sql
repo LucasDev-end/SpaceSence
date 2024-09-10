@@ -7,11 +7,11 @@ CREATE TABLE usuario (
 	id_usuario INT PRIMARY KEY AUTO_INCREMENT,
     nome_empresa VARCHAR(80),                   -- NOME DA EMPRESA
     nome_responsável VARCHAR(80),				-- NOME DO RESPONSAVEL PELA EMPRESA
-    cargo VARCHAR(20),							-- NÍVEL DE ACESSO QUE O RESPONSÁVEL TERÁ NA ALTERAÇÃO DOS DADOS
     cnpj CHAR(18),                              -- CNPJ DA EMPRESA
     telefone VARCHAR(16),                       -- TELEFONE DE CONTATO DA EMPRESA
     email VARCHAR(100),                         -- EMAIL DA EMPRESA
     senha VARCHAR(50)                           -- SENHA ESCOLHIDA PELA EMPRESA
+    --cargo VARCHAR(20),							-- NÍVEL DE ACESSO QUE O RESPONSÁVEL TERÁ NA ALTERAÇÃO DOS DADOS
 
 );
 
