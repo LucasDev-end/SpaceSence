@@ -11,14 +11,14 @@ CREATE TABLE usuario (
     telefone VARCHAR(16),                       -- TELEFONE DE CONTATO DA EMPRESA
     email VARCHAR(100),                         -- EMAIL DA EMPRESA
     senha VARCHAR(50)                           -- SENHA ESCOLHIDA PELA EMPRESA
-    --cargo VARCHAR(20),							-- NÍVEL DE ACESSO QUE O RESPONSÁVEL TERÁ NA ALTERAÇÃO DOS DADOS
+    -- cargo VARCHAR(20),						-- NÍVEL DE ACESSO QUE O RESPONSÁVEL TERÁ NA ALTERAÇÃO DOS DADOS
 
 );
 
 INSERT INTO usuario VALUES
-    (default,'atacadão', 'Joshua Ramo','Representante','99999999/0001-99', '11 11111-1111', 'contato@atacadao.com', 'api#pi'),
-    (default,'coop', 'Leticia Flores','Diretor de vendas', '88888888/0001-88', '22 22222-2222', 'contato@coop.com', 'qw!qw'),
-    (default,'assaí', 'Jessica Oliveira','Gerente', '7777777/0001-77', '33 33333-3333', 'contato@assai.com', 'as@as');
+    (default,'atacadão', 'Joshua Ramo','99999999/0001-99', '11 11111-1111', 'contato@atacadao.com', 'api#pi'),
+    (default,'coop', 'Leticia Flores','88888888/0001-88', '22 22222-2222', 'contato@coop.com', 'qw!qw'),
+    (default,'assaí', 'Jessica Oliveira','7777777/0001-77', '33 33333-3333', 'contato@assai.com', 'as@as');
 
 SELECT * FROM usuario;
 DESC usuario;
