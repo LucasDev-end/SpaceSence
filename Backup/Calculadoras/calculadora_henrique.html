@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira</title>
+</head>
+<body>
+    <h1><i><u>SIMULE PARA SEU NEGÓCIO</u></i></h1>
+
+    <h1>INSIRA O PORTE DO SEU ESTABELECIMENTO:</h1>
+    <h2>Pequeno, Médio ou Grande</h1>
+    <input type="text" id="ipt_tamanho">
+
+    <h1>INSIRA O NÍVEL DE MOVIMENTAÇÃO:</h1>
+    <h2>Baixa, Moderada ou Alta</h1>
+    <input type="text" id="ipt_nivel">
+    
+    <h1>INSIRA A QUANTIDADE DE PRATELEIRAS: </h1>
+    <input type="number" id="ipt_num_prat">
+
+    <h1>INSIRA O FATURAMENTO MENSAL:</h1>
+        <input type="number" id="ipt_faturamento"><br><br>
+    
+    <button onclick="calcular()">CALCULAR</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>    
+    function calcular() {
+        var numeroPrat = Number(ipt_num_prat.value);
+        var tamanho = ipt_tamanho.value
+        var movimentacao = ipt_nivel.value
+        var custos = 0
+        var tam_nivel = 0
+        var parametro = 0         
+        
+        //O valor do simulador será calculado a partir do PORTE, MOVIMENTAÇÃO e Nº de PRATELEIRAS inserido pelo usuário.
+        
+        if ( tamanho == "Pequeno") {
+            //Sensores distancia curta
+            custos = (numeroPrat *2) * 100;
+            tam_nivel = 5;            
+        }
+
+        if ( tamanho == "Médio") {
+            //Sensores distancia média
+            custos = (numeroPrat *2) * 150;
+            tam_nivel = 10;            
+        }
+
+        if ( tamanho == "Grande") {
+            //Sensores distancia longa
+            custos = (numeroPrat *2) * 200;
+            tam_nivel = 15;            
+        }
+
+        var mov_nivel = 0
+        
+        if ( movimentacao == "Baixa"){
+            mov_nivel = 0.5;
+        }
+
+        if ( movimentacao == "Moderada"){
+            mov_nivel = 1;
+        }
+
+        if ( movimentacao == "Alta"){
+            mov_nivel = 2;  
+        }
+
+        var aumento_lucro = 0;
+        if (numeroPrat > 16){
+            parametro = 16 ;      // se o número de prateleiras passar de 16, será contado como 16 prateleiras          
+            aumento_lucro = (mov_nivel * tam_nivel) + parametro ;
+        }
+
+        if (numeroPrat <= 16){
+            parametro =  10;      // se o número de prateleiras for entre 7 e 16, será contado como 10 prateleiras         
+            aumento_lucro = (mov_nivel * tam_nivel) + parametro ;
+        }
+
+        if (numeroPrat <= 6){
+            parametro =  numeroPrat;   // se o número de prateleiras for menor ou igual a 6, será contado o número informado pelo usuário           
+            aumento_lucro = (mov_nivel * tam_nivel) + parametro ;
+        }
+
+        var faturamento = Number(ipt_faturamento.value)
+        var aumento_faturamento = ( faturamento * (aumento_lucro/100)) + faturamento;
+
+        div_mensagem.innerHTML = `O custos totais serão de <b>R$${custos}</b> para a implementação do sistema nas ${numeroPrat} prateleiras. <br>
+        Com nossa solução, seu estabelecimento pode aumentar em até <b>${aumento_lucro}%</b> o faturamento.<br>
+        De <b>R$${faturamento}</b> para <b>R$${aumento_faturamento}</b> por mês.`;
+    }
+</script>

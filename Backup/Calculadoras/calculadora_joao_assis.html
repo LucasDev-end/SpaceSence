@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+<body>
+    <h1>Simulador de Faturamento</h1>
+        
+        <b>Como é arrumada a gôndola? ("vertical", "horizontal", "blocos")</b>
+        <input type="text" id="ipt_layoutArranjo"> <br> <br>
+
+        <b>Já possui organização para datas sazonais? ("sim", "não")</b>
+        <input type="text" id="ipt_sazonalidade"> <br> <br>
+
+        <b>As maiores marcas estão localizadas em qual parte da gôndola? ("acima da cabeça", "altura dos olhos", "linha da cintura", "abaixo da cintura", "chão")</b>
+        <input type="text" id="ipt_posicaoMarcas"> <br> <br>
+
+        <b>Produtos para crianças estão localizados em qual parte da gôndola e freezers? ("acima da cabeça", "altura dos olhos", "linha da cintura", "abaixo da cintura", "chão")</b>
+        <input type="text" id="ipt_crianca"> <br> <br>
+
+        <b>Produtos pesado estão localizados em qual parte da gôndola? ("acima da cabeça", "altura dos olhos", "linha da cintura", "abaixo da cintura", "chão")</b>
+        <input type="text" id="ipt_prodPesado"> <br> <br>
+
+        <b>Porcentagem atual de vendas em zonas quentes (%):</b>
+        <input type="number" id="ipt_porcentagemZonaQuente"> <br> <br>
+
+        <button onclick="calcularFaturamento()">Calcular Aumento de Faturamento</button>
+
+        <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function calcularFaturamento() {
+        var porcentagemZonaQuente = Number(ipt_porcentagemZonaQuente.value);
+        var layoutArranjo = ipt_layoutArranjo.value;
+        var sazonalidade = ipt_sazonalidade.value;
+        var posicaoMarcas = ipt_posicaoMarcas.value;
+        var crianca = ipt_crianca.value;
+        var pesado = ipt_prodPesado.value;
+
+        // simulação de aumento de potencial
+        var aumentoPotencial = 0;
+
+
+        // layout das gôndulas
+        if (layoutArranjo == "vertical") {
+            aumentoPotencial++;
+        }
+        if (layoutArranjo == "blocos") {
+            aumentoPotencial += 5;
+        }
+        if (layoutArranjo == "horizontal") {
+            aumentoPotencial += 10;
+        }
+        
+        // se o mercado se prepara para datas sazonais
+        if (sazonalidade == "sim") {
+            aumentoPotencial += 2;
+        } else {
+            aumentoPotencial += 5;
+        }
+        
+        // posição dos melhores produtos
+        if (posicaoMarcas == "acima da cabeça") {
+            aumentoPotencial += 12;
+        }
+        if (posicaoMarcas == "altura dos olhos") {
+            aumentoPotencial += 4;
+        }
+        if (posicaoMarcas == "linha da cintura") {
+            aumentoPotencial += 6;
+        }
+        if (posicaoMarcas == "abaixo da cintura") {
+            aumentoPotencial += 8;
+        }
+        if (posicaoMarcas == "chão") {
+            aumentoPotencial += 10;
+        }
+
+        //posição dos produtos pesados
+        if (pesado == "acima da cabeça") {
+            aumentoPotencial += 10;
+        }
+        if (pesado == "altura dos olhos") {
+            aumentoPotencial += 8;
+        }
+        if (pesado == "linha da cintura") {
+            aumentoPotencial += 6;
+        }
+        if (pesado == "abaixo da cintura") {
+            aumentoPotencial += 4;
+        }
+        if (pesado == "chão") {
+            aumentoPotencial += 0;
+        }
+
+
+        // posição dos produtos para crianças
+        if (crianca == "acima da cabeça") {
+            aumentoPotencial += 10;
+        }
+        if (crianca == "altura dos olhos") {
+            aumentoPotencial += 7;
+        }
+        if (crianca == "linha da cintura") {
+            aumentoPotencial += 4;
+        }
+        if (crianca == "abaixo da cintura") {
+            aumentoPotencial  += 0;
+        }
+        if (crianca == "chão") {
+            aumentoPotencial += 0;
+        }
+
+
+        var aumentoFaturamento = (porcentagemZonaQuente * (aumentoPotencial / 100));
+
+        var porcentagemZonaFria = porcentagemZonaQuente * 0.3;
+        var aumentoFaturamentoFria = (porcentagemZonaFria * (aumentoPotencial / 100));
+        div_msg.innerHTML = `O aumento estimado no faturamento de aluguel das gôndolas nas áreas de zona quente é de: <b style="color: blue">${aumentoFaturamento}%</b><br>Enquanto o aumento estimado na zona fria é de: <b style="color: blue">${aumentoFaturamentoFria}%</b>`;
+
+    }
+</script>
